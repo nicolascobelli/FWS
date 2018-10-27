@@ -9,8 +9,9 @@ ex:carrera rdf:type rdfs:Class .
 
 
 ex:asignatura rdf:type rdfs:Class .
-ex:curso rdf:type rdfs:Property
-ex:curso rdf:domain ex:asignatura
+
+ex:curso rdf:type rdfs:Class
+
 
 ex:ambiente rdf:type rdfs:Class .
 ex:clase rdfs:subClassOf ex:ambiente .
@@ -19,3 +20,11 @@ ex:laboratorio rdfs:subClassOf ex:ambiente .
 
 exthings:IngenieriaComputacion rdf:type ex:carrera .
 exthings:FundamentosWebSemantica rdf:type ex:asignatura .
+exthings:Calculo1 rdf:type ex:asignatura
+exthings:2018 ex:curso ex:FundamentosWebSemantica
+exthings:2017 ex:curso ex:FundamentosWebSemantica
+exthings:NicolasCobelli rdf:type ex:estudiante .
+ex:nicobelli95@gmail.com ex:email ex:NicolasCobelli
+ex:01/02/1995 ex:fecha_nacimiento ex:NicolasCobelli
+exthings:JuanPerez rdf:type ex:estudiante
+
