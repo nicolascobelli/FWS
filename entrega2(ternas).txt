@@ -5,26 +5,87 @@ ex:fecha_nacimiento rdf:type rdfs:Property
 ex:fecha_nacimiento rdf:domain ex:estudiante
 
 
-ex:carrera rdf:type rdfs:Class .
+ex:hace_curso rdf:type rdfs:Class
+ex:estudiante_que_cursa rdf:type rdfs:Property
+ex:estudiante_que_cursa rdf:domain ex:hace_curso
+ex:que_curso rdf:type rdfs:Property
+ex:que_curso rdf:domain ex:hace_curso
 
+ex:Participacion rdf:type rdfs:Class
+ex:estudiante_curso rdf:type rdfs:Property
+ex:estudiante_curso rdf:domain ex:Participacion
+ex:tipo_ambiente rdf:type rdfs:Property
+ex:tipo_ambiente rdf:domain ex:Participacion
+ex:descripcion rdf:type rdfs:Property
+ex:descripcion rdf:domain ex:Participacion
+ex:fecha rdf:type rdfs:Property
+ex:fecha rdf:domain ex:Participacion
+
+ex:carrera rdf:type rdfs:Class .
 
 ex:asignatura rdf:type rdfs:Class .
 
-ex:curso rdf:type rdfs:Class
 
+ex:curso rdf:type rdfs:Class
+ex:pertenece_a rdf:type rdfs:Property
+ex:pertenece_a rdf:domain rdfs:curso
 
 ex:ambiente rdf:type rdfs:Class .
 ex:clase rdfs:subClassOf ex:ambiente .
 ex:plataforma_web rdfs:subClassOf ex:ambiente .
 ex:laboratorio rdfs:subClassOf ex:ambiente .
 
-exthings:IngenieriaComputacion rdf:type ex:carrera .
-exthings:FundamentosWebSemantica rdf:type ex:asignatura .
-exthings:Calculo1 rdf:type ex:asignatura
-exthings:2018 ex:curso ex:FundamentosWebSemantica
-exthings:2017 ex:curso ex:FundamentosWebSemantica
-exthings:NicolasCobelli rdf:type ex:estudiante .
+ex:IngenieriaComputacion rdf:type ex:carrera .
+ex:FundamentosWebSemantica rdf:type ex:asignatura .
+ex:FWS2018 rdf:type ex:curso .
+ex:FWS2017 rdf:type ex:curso .
+ex:Calculo1 rdf:type ex:asignatura
+ex:Calculo1_2018 rdf:type ex:curso
+ex:Calculo1_2018 ex:pertenece_a ex:Calculo1
+ex:FWS2018 ex:pertenece_a ex:FundamentosWebSemantica
+ex:FWS2017 ex:pertenece_a ex:FundamentosWebSemantica
+
+
+ex:NicolasCobelli rdf:type ex:estudiante .
 ex:nicobelli95@gmail.com ex:email ex:NicolasCobelli
 ex:01/02/1995 ex:fecha_nacimiento ex:NicolasCobelli
-exthings:JuanPerez rdf:type ex:estudiante
+ex:NicolasCobelli ex:estudia ex:IngenieriaComputacion
+ex:JuanPerez rdf:type ex:estudiante
+ex:juan@perez.com ex:email ex:JuanPerez
+ex:01/02/1995 ex:fecha_nacimiento ex:JuanPerez
+ex:JuanPerez ex:estudia ex:IngenieriaComputacion
 
+ex:Cobelli_FWS rdf:type ex:hace_curso .
+ex:Cobelli_FWS ex:estudiante_que_cursa ex:NicolasCobelli
+ex:Cobelli_FWS ex:que_curso ex:FWS2018
+ex:Cobelli_Cal rdf:type ex:hace_curso .
+ex:Cobelli_Cal ex:estudiante_que_cursa ex:NicolasCobelli
+ex:Cobelli_Cal ex:que_curso ex:Calculo1_2018
+ex:Perez_FWS rdf:type ex:hace_curso .
+ex:Perez_FWS ex:estudiante_que_cursa ex:JuanPerez
+ex:Perez_FWS ex:que_curso ex:FWS2018
+
+ex:Participacion1 rdf:type ex:Participacion .
+ex:Participacion2 rdf:type ex:Participacion .
+ex:Participacion3 rdf:type ex:Participacion .
+ex:Participacion4 rdf:type ex:Participacion .
+
+ex:Participacion1 ex:estudiante_que_cursa ex:Cobelli_FWS
+ex:Participacion1 ex:tipo_ambiente ex:clase
+ex:Participacion1 ex:descripcion ex:"Fue a clase"
+ex:Participacion1 ex:fecha ex:20/4/2018
+
+ex:Participacion2 ex:estudiante_que_cursa ex:Cobelli_FWS
+ex:Participacion2 ex:tipo_ambiente ex:plataforma_web
+ex:Participacion2 ex:descripcion ex:"eva"
+ex:Participacion2 ex:fecha ex:20/4/2018
+
+ex:Participacion3 ex:estudiante_que_cursa ex:Cobelli_FWS
+ex:Participacion3 ex:tipo_ambiente ex:laboratorio
+ex:Participacion3 ex:descripcion ex:"lab"
+ex:Participacion3 ex:fecha ex:20/4/2018
+
+ex:Participacion4 ex:estudiante_que_cursa ex:Cobelli_Cal
+ex:Participacion4 ex:tipo_ambiente ex:plataforma_web
+ex:Participacion4 ex:descripcion ex:"eva"
+ex:Participacion4 ex:fecha ex:20/4/2018
