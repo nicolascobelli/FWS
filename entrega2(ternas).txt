@@ -1,0 +1,28 @@
+ex:estudiante rdf:type rdfs:Class .
+ex:nombre rdf:type rdfs:Property
+ex:nombre rdf:range ex:estudiante
+ex:email rdf:type rdfs:Property
+ex:email rdf:range ex:estudiante
+ex:fecha_nacimiento rdf:type rdfs:Property
+ex:fecha_nacimiento rdf:range ex:estudiante
+
+
+ex:carrera rdf:type rdfs:Class .
+ex:noombre_carrera rdf:type rdfs:Property
+ex:nombre_carrera rdf:range ex:carrera
+
+ex:asignatura rdf:type rdfs:Class .
+ex:nombre_asignatura rdf:type rdfs:Property
+ex:nombre_asignatura rdf:range ex:estudiante
+
+ex:ambiente rdf:type rdfs:Class .
+ex:nombre_ambiente rdf:type rdfs:Property
+ex:nombre_ambiente rdf:range ex:estudiante
+
+	
+ex:PassengerVehicle rdfs:subClassOf ex:MotorVehicle .
+ex:Van rdfs:subClassOf ex:MotorVehicle .
+ex:Truck rdfs:subClassOf ex:MotorVehicle .
+	
+ex:MiniVan rdfs:subClassOf ex:Van .
+ex:MiniVan rdfs:subClassOf ex:PassengerVehicle .
