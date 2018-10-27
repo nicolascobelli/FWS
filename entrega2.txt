@@ -7,12 +7,6 @@ xml:base="http://www.animals.fake/animals#">
 
 <rdfs:Class rdf:ID="estudiante" />
 
-<rdf:Description ID="nombre del estudiante">
- <rdf:type resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
- <rdfs:domain rdf:resource="#MotorVehicle"/>
- <rdfs:range rdf:resource="#Person"/>
-</rdf:Description>
-
 
 <rdfs:Class rdf:ID="carrera" />
 <rdfs:Class rdf:ID="asignatura" />
