@@ -1,0 +1,32 @@
+<Estudiante, type, Class> //Estudiante es una clase
+<Nombre, type, Propery>
+<Nombre, domain, Estudiante>
+<Email, type, Propery>
+<Email, domain, Estudiante>
+<FechaNacimiento, type, Propery>
+<FechaNacimiento, domain, Estudiante>
+
+<Carrera, type, Class> //Carrera es una clase
+<Asignatura, type, Class> //Asignatura es una clase
+<Curso, type, Asignatura> //Curso es una instancia de Asignatura 
+<Ambiente, type, Class>
+<Clase, subClasOf, Ambiente>
+<PlataformaWeb, subClassOf, Ambiente>
+<Laboratorio, subClassOf, Ambiente>
+
+<Denominación, type, Property>
+<Denominación, domain, Carrera>
+<Denominación, domain, Asignatura>
+<Denominación, domain, Ambiente>
+
+<Participación, type, Class>
+<Fecha, type, Property>
+<Fecha, domain, Participación>
+<Descripción, type, Property>
+<Descripción, domain, Participación>
+
+<Cursa, type, Statement>
+<Estudiante, subject, Cursa>
+<Participación, predicate, Cursa>
+<Curso, object, Cursa>
+
