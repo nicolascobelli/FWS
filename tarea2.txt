@@ -9,11 +9,17 @@
 <carrera, type, Class> 
 <asignatura, type, Class> 
 <curso, type, Class>
+<año, type, Property>
+<año, domain, curso>
 
 <ambiente, type, Class>
 <clase, subClasOf, ambiente>
 <plataformaWeb, subClassOf, ambiente>
 <laboratorio, subClassOf, ambiente>
+<fecha, type, Property>
+<fecha, domain, ambiente>
+<descripcion, type, Property>
+<descripción, domain, ambiente>
 
 <denominación, type, Property>
 <denominación, domain, carrera>
@@ -39,9 +45,7 @@
 <participa_en, type, Property>
 <participa_en, domain, estudiante>
 <participa_en, range, ambiente> 
-<fecha, subProperyOf, participa_en>
-<descripción, subProperyOf, participa_en> 
-
+ 
 -----------------------------------------------------------------------
 
 //Instancias de ejemplo
@@ -51,8 +55,11 @@
 <Ingeniería en Computación, tiene_asignatura, Programación>
 
 <WebSemantica2018, es_curso_de, WebSemantica>
+<WebSemantica2018, año, 2018>
 <Base_de_Datos2018, es_curso_de, Base_de_Datos>
+<Base_de_Datos2018, año, 2018>
 <Programación2018, es_curso_de, Programación>
+<Programación2018, año, 2018>
 
 <Pepe, inscripto_en, WebSemantica2018>
 <Pepe, inscripto_en, Base_de_Datos2018>
@@ -85,11 +92,40 @@
 
 //Pepe pertenece a un ambiente de programación
 
-<Pepe, participa_en_lab, programacion_clases>
+<Pepe, participa_en, programacion_clases>
 <programacion_clases, fecha, 25/11/2018>
 <programacion_clases, descripcion, practica_recursion>
 
 //Pepe no pertenece a ningún ambiente de base de datos
+
+-----------------------------------------------------------------------
+
+//Consultas
+
+//Detalle de participación por curso
+//Datos
+// Asignatura: WebSemantica y año: 2018
+
+select ?inscripto ?denominacion ?fecha ?descripcion
+where 
+{
+    ?inscripto type estudiante.
+    ?curso es_curso_de WebSemantica.
+    ?curso año 2018.
+    ?inscripto inscripto_en ?curso.
+    OPTIONAL 
+    {
+        ?inscrito participa_en ?ambiente.
+        ?curso tiene_ambiente ?ambiente.
+        ?ambiente denominacion ?denominacion.
+        ?ambiente fecha ?fecha.
+        ?ambiente descripcion ?descripcion.
+    }
+}
+
+//Participación por ambiente y por curso
+
+
 
 
 
