@@ -38,8 +38,8 @@
 <inscripto_en, range, curso>
 <inscripto_en, domain, estudiante>
 
-<tiene_ambientes, type, Property>
-<tiene_ambientes, domain, curso>
+<tiene_ambiente, type, Property>
+<tiene_ambiente, domain, curso>
 <tiene_ambiente, range, ambiente>
 
 <participa_en, type, Property>
@@ -68,11 +68,11 @@
 <Pepe, email, pepe@fing.edu.uy>
 <Pepe, fechaNacimiento, 29/02/1983>
 
-<WebSemantica2018, tiene_ambientes, web_semantica_plataforma>
+<WebSemantica2018, tiene_ambiente, web_semantica_plataforma>
 <WebSemantica2018, tiene_ambiente, web_semantica_clases>
 <WebSemantica2018, tiene_ambiente, web_semantica_laboratorio>
 
-<Base_de_Datos2018, tiene_ambientes, base_de_datos_plataforma>
+<Base_de_Datos2018, tiene_ambiente, base_de_datos_plataforma>
 <Base_de_Datos2018, tiene_ambiente, base_de_datos_clases>
 <Base_de_Datos2018, tiene_ambiente, base_de_datos_laboratorio>
 
@@ -125,14 +125,30 @@ where
 }
 
 //Participación por ambiente y por curso
-select ?asig ?denominacion ?año ?denominacion
+//Participación por ambiente
+select (SUM(?ambiente_asig) as cantidad_participaciones_asig) ?denominacion
 where {
 	?asig type asignatura
-	
-		
+	?asig denominacion ?denominacion
+	?curso es_curso_de $asig
+	?curso tiene_ambiente ?ambiente_asig
+	}
+GROUP BY ?asig
+ORDER BY (denominacion)
 
+select (SUM(?ambiente_año) as ?cantidad_participaciones_año) ?año
+where {
+	?curso type curso
+	?curso año ?año
+	?curso tiene_ambiente ?ambiente_año
+	}
+GROUP BY ?año
+ORDER BY DESC(?año)
 
+SELECT (SUM(?participaciones_ambiente) as ?cantidad_participaciones_ambiente)
+where {
 
+}
 
 //Estudiantes con participación en plataforma web o laboratorio
 select ?nombre ?denominacionamb ?denominacionasig ?año ?fecha ?descripcion
@@ -140,24 +156,24 @@ where {
 	{{?amb type plataformaWEB
 	?estudiante participa_en ?amb
 	?estudiante nombre ?nombre
-	?denominacionamb
+	?amb denominacion ?denominacionamb 
 	?curso tiene_ambiente ?amb
 	?curso es_curso_de ?asig
 	?año año ?curso
 	?fecha fecha amb
 	?descripcion descripcion ?amb
-	?asig denominacionasig ?denominacion}
+	?asig denominacion ?denominacionasig}
 	UNION
 	{?amb type laboratorio
 	?estudiante participa_en ?amb
 	?estudiante nombre ?nombre
-	?denominacionamb
+	?amb denominacion ?denominacionamb 
 	?curso tiene_ambiente ?amb
 	?curso es_curso_de ?asig
 	?año año ?curso
 	?fecha fecha amb
 	?descripcion descripcion ?amb
-	?asig denominacionasig ?denominacion}}
+	?asig denominacion ?denominacionasig}}
 	}
 	
 
