@@ -1,32 +1,113 @@
-<Estudiante, type, Class> //Estudiante es una clase
-<Nombre, type, Propery>
-<Nombre, domain, Estudiante>
-<Email, type, Propery>
-<Email, domain, Estudiante>
-<FechaNacimiento, type, Propery>
-<FechaNacimiento, domain, Estudiante>
+<estudiante, type, Class>
+<nombre, type, Propery>
+<nombre, domain, Estudiante>
+<email, type, Propery>
+<email, domain, Estudiante>
+<fechaNacimiento, type, Propery>
+<fechaNacimiento, domain, Estudiante>
 
-<Carrera, type, Class> //Carrera es una clase
-<Asignatura, type, Class> //Asignatura es una clase
-<Curso, type, Asignatura> //Curso es una instancia de Asignatura 
-<Ambiente, type, Class>
-<Clase, subClasOf, Ambiente>
-<PlataformaWeb, subClassOf, Ambiente>
-<Laboratorio, subClassOf, Ambiente>
+<carrera, type, Class> 
+<asignatura, type, Class> 
+<curso, type, Class>
 
-<Denominación, type, Property>
-<Denominación, domain, Carrera>
-<Denominación, domain, Asignatura>
-<Denominación, domain, Ambiente>
+<ambiente, type, Class>
+<clase, subClasOf, ambiente>
+<plataformaWeb, subClassOf, ambiente>
+<laboratorio, subClassOf, ambiente>
 
-<Participación, type, Class>
-<Fecha, type, Property>
-<Fecha, domain, Participación>
-<Descripción, type, Property>
-<Descripción, domain, Participación>
+<denominación, type, Property>
+<denominación, domain, carrera>
+<denominación, domain, asignatura>
+<denominación, domain, ambiente>
 
-<Cursa, type, Statement>
-<Estudiante, subject, Cursa>
-<Participación, predicate, Cursa>
-<Curso, object, Cursa>
+<tiene_asignatura, type, Propery>
+<tiene_asignatura, domain, carrera>
+<tiene_asignatura, range, asignatura>
+
+<es_curso_de, type, Property>
+<es_curso_de, domain, curso>
+<es_curso_de, range, asignatura>
+
+<inscripto_en, type, property>
+<inscripto_en, range, curso>
+<inscripto_en, domain, estudiante>
+
+<tiene_ambientes, type, Property>
+<tiene_ambientes, domain, curso>
+<tiene_ambiente, range, ambiente>
+
+<participa_en, type, Property>
+<participa_en, domain, estudiante>
+<participa_en, range, ambiente> 
+<fecha, subProperyOf, participa_en>
+<descripción, subProperyOf, participa_en> 
+
+-----------------------------------------------------------------------
+
+//Instancias de ejemplo
+
+<Ingeniería en Computación, tiene_asignatura, WebSemantica>
+<Ingeniería en Computación, tiene_asignatura, Base_de_Datos>
+<Ingeniería en Computación, tiene_asignatura, Programación>
+
+<WebSemantica2018, es_curso_de, WebSemantica>
+<Base_de_Datos2018, es_curso_de, Base_de_Datos>
+<Programación2018, es_curso_de, Programación>
+
+<Pepe, inscripto_en, WebSemantica2018>
+<Pepe, inscripto_en, Base_de_Datos2018>
+<Pepe, inscripto_en, Programación2018>
+<Pepe, nombre, Jose Francisco>
+<Pepe, email, pepe@fing.edu.uy>
+<Pepe, fechaNacimiento, 29/02/1983>
+
+<WebSemantica2018, tiene_ambientes, web_semantica_plataforma>
+<WebSemantica2018, tiene_ambiente, web_semantica_clases>
+<WebSemantica2018, tiene_ambiente, web_semantica_laboratorio>
+
+<Base_de_Datos2018, tiene_ambientes, base_de_datos_plataforma>
+<Base_de_Datos2018, tiene_ambiente, base_de_datos_clases>
+<Base_de_Datos2018, tiene_ambiente, base_de_datos_laboratorio>
+
+<Programación2018, tiene_ambiente, programacion_plataforma>
+<Programación2018, tiene_ambiente, programacion_clases>
+<Programación2018, tiene_ambiente, programacion_laboratorio>
+
+//Pepe pertenece a dos ambientes de web semántica
+
+<Pepe, participa_en, web_semantica_plataforma>
+<web_semantica_plataforma, fecha, 31/10/2018>
+<web_semantica_plataforma, descripcion, ejercicios_de_SPARQL>
+
+<Pepe, participa_en, web_semantica_clases>
+<web_semantica_clases, fecha, 25/10/2018>
+<web_semantica_clases, descripcion, clase_de_SPARQL>
+
+//Pepe pertenece a un ambiente de programación
+
+<Pepe, participa_en_lab, programacion_clases>
+<programacion_clases, fecha, 25/11/2018>
+<programacion_clases, descripcion, practica_recursion>
+
+//Pepe no pertenece a ningún ambiente de base de datos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
