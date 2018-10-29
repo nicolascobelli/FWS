@@ -1,4 +1,4 @@
-<estudiante, type, Class>
+﻿<estudiante, type, Class>
 <nombre, type, Propery>
 <nombre, domain, Estudiante>
 <email, type, Propery>
@@ -106,10 +106,11 @@
 //Datos
 // Asignatura: WebSemantica y año: 2018
 
-select ?inscripto ?denominacion ?fecha ?descripcion
+select ?nombre ?denominacion ?fecha ?descripcion
 where 
 {
     ?inscripto type estudiante.
+    ?inscripto nombre ?nombre
     ?curso es_curso_de WebSemantica.
     ?curso año 2018.
     ?inscripto inscripto_en ?curso.
@@ -124,10 +125,47 @@ where
 }
 
 //Participación por ambiente y por curso
+select ?asig ?denominacion ?año ?denominacion
+where {
+	?asig type asignatura
+	
+		
 
 
 
 
+//Estudiantes con participación en plataforma web o laboratorio
+select ?nombre ?denominacionamb ?denominacionasig ?año ?fecha ?descripcion
+where {
+	{{?amb type plataformaWEB
+	?estudiante participa_en ?amb
+	?estudiante nombre ?nombre
+	?denominacionamb
+	?curso tiene_ambiente ?amb
+	?curso es_curso_de ?asig
+	?año año ?curso
+	?fecha fecha amb
+	?descripcion descripcion ?amb
+	?asig denominacionasig ?denominacion}
+	UNION
+	{?amb type laboratorio
+	?estudiante participa_en ?amb
+	?estudiante nombre ?nombre
+	?denominacionamb
+	?curso tiene_ambiente ?amb
+	?curso es_curso_de ?asig
+	?año año ?curso
+	?fecha fecha amb
+	?descripcion descripcion ?amb
+	?asig denominacionasig ?denominacion}}
+	}
+	
+
+	
+	
+
+	
+	
 
 
 
