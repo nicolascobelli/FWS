@@ -134,7 +134,7 @@ where {
 	?curso tiene_ambiente ?ambiente_asig
 	}
 GROUP BY ?asig
-ORDER BY (?denominacion)
+ORDER BY ?cantidad_participaciones_asig ?denominacion 
 
 //Participación por año
 select (SUM(?ambiente_año) as ?cantidad_participaciones_año) ?año
@@ -143,7 +143,7 @@ where {
 	?curso año ?año
 	?curso tiene_ambiente ?ambiente_año
 	}
-GROUP BY ?año
+GROUP BY ?cantidad_participaciones_año ?año
 ORDER BY DESC(?año)
 
 //Participación por ambiente
@@ -153,7 +153,7 @@ where {
 	?subclase subClassOf ambiente
 	
 }
-GROUP BY ?subclase
+GROUP BY ?cantidad_participaciones_ambiente ?subclase
 ORDER BY (?subclase)
 
 
