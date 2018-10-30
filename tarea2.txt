@@ -136,6 +136,7 @@ where {
 GROUP BY ?asig
 ORDER BY (denominacion)
 
+//Participación por año
 select (SUM(?ambiente_año) as ?cantidad_participaciones_año) ?año
 where {
 	?curso type curso
@@ -145,10 +146,14 @@ where {
 GROUP BY ?año
 ORDER BY DESC(?año)
 
-SELECT (SUM(?participaciones_ambiente) as ?cantidad_participaciones_ambiente)
-where {
+//Participación por ambiente
 
+SELECT (SUM(?subclase) as ?cantidad_participaciones_ambiente) ?subclase
+where {
+	?subclase subClassOf ambiente
+	
 }
+GROUP BY 
 
 //Estudiantes con participación en plataforma web o laboratorio
 select ?nombre ?denominacionamb ?denominacionasig ?año ?fecha ?descripcion
