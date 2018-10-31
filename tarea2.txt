@@ -125,7 +125,7 @@ where
 }
 
 //Participación por ambiente y por curso
-//Participación por ambiente
+//Participación por asignatura
 select (SUM(?ambiente_asig) as cantidad_participaciones_asig) ?denominacion
 where {
 	?asig type asignatura
@@ -184,9 +184,35 @@ where {
 	?asig denominacion ?denominacionasig}}
 	}
 	
+//Resultados esperados
+//Participaciones por asignatura	
+Pepe, web_semantica_plataforma,31/10/2018, ejercicios_de_SPARQL
+Pepe, web_semantica_clases, 25/10/2018, clase_de_SPARQL
 
-	
-	
+//Participacion para cada asignatura
+Base_de_Datos 0
+Programación 1
+WebSemantica 2
+
+//Participacion por año
+2018 3
+
+//Participacion por ambiente
+base_de_datos_clases 0
+base_de_datos_laboratorio 0
+base_de_datos_plataforma 0
+programacion_clases 1
+programacion_laboratorio 0
+programacion_plataforma 0
+web_semantica_clases 1
+web_semantica_laboratorio 0
+web_semantica_plataforma 1
+
+//Estudiantes con participacion en plataforma web o laboratorio
+
+Pepe, web_semantica_plataforma, WebSemantica, 2018, 31/10/2018, ejercicios_de_SPARQL
+
+
 
 	
 	
